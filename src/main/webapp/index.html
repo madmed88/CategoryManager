@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html ng-app="categoryManager" lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="Pragma" content="no-cache">
+		<meta http-equiv="Expires" content="-1">
+        <title>KAPIT</title>
+        <link href="css/lib/bootstrap.min.css" rel="stylesheet">
+		<link href="css/lib/bootstrap-responsive.min.css" rel="stylesheet">
+		<link href="css/lib/jquery-ui.min.css" rel="stylesheet">
+		<link rel="stylesheet" href="css/style.css"/>
+    </head>
+    <body>
+    	<div class="navbar navbar-inverse">
+		  <div class="navbar-inner">
+		    <a class="brand" href="#">Categories</a>
+		    <ul class="nav pull-right">
+               <li class="divider-vertical"></li>
+               <li><a href="j_spring_security_logout">Logout</a></li>
+             </ul>
+		  </div>
+		  
+		</div>
+	    <div class="container">
+
+	        <div id="body">
+			
+			    <div id="page">
+			
+			        <div id="pageHeader">
+			            
+			        </div>
+			
+			        <div id="pageBody">
+			        	<div ng-view></div>
+			        </div>
+			
+			    </div>
+			
+			</div>
+		</div>
+		<script src="js/lib/jquery.min.js"></script>
+  		<script src="js/lib/jquery-ui.min.js"></script>
+		<script src="js/lib/angular.min.js"></script>
+		<script src="js/lib/angular-resource.min.js"></script>
+		<script src="js/lib/bootstrap.min.js"></script>
+		<script src="js/app/application.js"></script>
+		<script src="js/app/controllers.js"></script>
+		<script src="js/app/services.js"></script>
+		<script src="js/app/directives.js"></script>
+		<script src="js/app/filters.js"></script>
+    </body>
+</html>

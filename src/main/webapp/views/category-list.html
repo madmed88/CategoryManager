@@ -1,0 +1,104 @@
+<div class="row">
+	<div class="span3">
+	    <ul class="nav nav-list">
+		    <li class="nav-header">Parents</li>
+		    <li class="active"><a href="#">All Categories</a></li>
+		    <li><a href="#">--</a></li>
+		    <hr/>
+		    <form ng-submit="categorySearch()">
+			    <input type="text" class="input-block-level" placeholder="Search" ng-model="keyword">
+			    <button type="submit" class="input-block-level">Submit</button>
+			</form>
+			<hr/>
+		</ul>
+	</div>
+	<div class="span9" >
+		<div class="row">
+			<div class="span9">
+				<ul class="breadcrumb">
+					<li><a href="#/category/">Root</a><span class="divider">></span></li>
+				  	<li ng-repeat="breadcrumb in breadcrumbs | reverse"><a href="#/category/{{breadcrumb.id}}">{{breadcrumb.name}}</a> <span class="divider">></span></li>
+				</ul>
+			</div>
+		</div>
+		<div class="row">
+		   	<div class="span3">
+		       	<input class="input-block-level" type="text" placeholder="Filter" ng-model="query">
+			</div>
+			<div class="span6">
+				<button class="btn" ng-disabled="currentPage == 0" ng-click="currentPage=currentPage-1">
+					Previous
+				</button>
+				<span>{{currentPage+1}}/{{numberOfPages()}}</span>
+				<button class="btn" ng-disabled="currentPage >= categories.length/pageSize - 1" ng-click="currentPage=currentPage+1">
+					Next
+				</button>
+			</div>
+		</div>
+		<div class="row">
+			<div class="span9">
+		    	<div class="btn-group pull-right">
+				    <button class="btn" ng-disabled="selectedItem == 0" ng-click="gotoCategoryChildrenPage()"><i class="icon-circle-arrow-down"></i>Open</button>
+				    <button class="btn" ng-disabled="selectedItem == 0" ng-click="deleteCategory(selectedItem)"><i class="icon-remove"></i>Remove</button>
+				    <button class="btn" ng-disabled="selectedItem == 0" href="#editCategory" class="button" data-toggle="modal"><i class="icon-pencil"></i>Edit</button>
+				    <button class="btn" ng-disabled="!parentCategory" href="#newCategory" class="button" data-toggle="modal"><i class="icon-plus"></i>Add</button>
+				</div>
+			</div>
+		</div>
+		<ol class="categoryList" ui-selectable="category">
+			<li class="ui-widget-content" ng-repeat="category in categories | filter: {name: query} | startFrom:currentPage*pageSize | limitTo:pageSize " category="{{category.id}}" ng-animate="'custom'">
+				<span>{{category.name}}</span>
+			</li>
+		</ol>
+	</div>
+</div>
+<!-- Modal new-->
+<div id="newCategory" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="newCategoryLabel" aria-hidden="true">
+	<div class="modal-header">
+		<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+		<h3 id="myModalLabel">Add Category</h3>
+	</div>
+	<div class="modal-body">
+		<form class="form-horizontal">
+
+	        <div class="control-group">
+	            <label class="control-label" for="category.name">Name</label>
+	            <div class="controls">
+	            	<input type="text" id="category.name" ng-model="category.name"/>
+	            </div>
+	        </div>
+	        
+	        <div class="control-group">
+				<div class="controls">
+	        		<button class="btn" ng-disabled="!parentCategory" ng-click="submit()" data-dismiss="modal">Save</button>
+				</div>
+			</div>
+			
+	    </form>
+	</div>
+</div>
+<!-- Modal edit-->
+<div id="editCategory" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="editCategoryLabel" aria-hidden="true">
+	<div class="modal-header">
+		<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+		<h3 id="myModalLabel">Edit Category</h3>
+	</div>
+	<div class="modal-body">
+		<form class="form-horizontal">
+
+	        <div class="control-group">
+	            <label class="control-label" for="category.name">Name</label>
+	            <div class="controls">
+	            	<input type="text" id="category.name" ng-model="category.name"/>
+	            </div>
+	        </div>
+	        
+	        <div class="control-group">
+				<div class="controls">
+	        		<button class="btn" ng-disabled="selectedItem == 0" ng-click="edit(selectedItem)" data-dismiss="modal">Save</button>
+				</div>
+			</div>
+			
+	    </form>
+	</div>
+</div>

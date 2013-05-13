@@ -1,0 +1,40 @@
+.ui-selectable .ui-selecting { background: #AAFFFF; }
+.ui-selectable .ui-selected { background: #0088CC; color: white; }
+.ui-selectable, ol { list-style-type: none; margin: 0 ; padding: 0; width: 100%; }
+.ui-selectable li { margin: 3px; padding: 0.4em; font-size: 1.4em; height: 18px; }
+
+.custom-enter-setup,
+.custom-leave-setup,
+.custom-move-setup {
+  -webkit-transition: 1s linear all;
+  -moz-transition: 1s linear all;
+  -o-transition: 1s linear all;
+  transition: 1s linear all;
+  position:relative;
+}
+
+.custom-enter-setup {
+  left:-10px;
+  opacity:0;
+}
+.custom-enter-setup.custom-enter-start {
+  left:0;
+  opacity:1;
+}
+
+.custom-leave-setup {
+  left:0;
+  opacity:1;
+}
+.custom-leave-setup.custom-leave-start {
+  left:10px;
+  opacity:0;
+}
+
+.custom-move-setup {
+  opacity:0.5;
+}
+.custom-move-setup.custom-move-start {
+  opacity:1;
+}
+

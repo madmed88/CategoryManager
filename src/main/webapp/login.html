@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+        <meta charset="utf-8">
+        <title>KAPIT</title>
+        <link href="css/lib/bootstrap.min.css" rel="stylesheet">
+		<link href="css/lib/bootstrap-responsive.min.css" rel="stylesheet">
+	</head>
+	
+	<body onload='document.loginForm.j_username.focus();'>
+		<div class="navbar navbar-inverse">
+		  <div class="navbar-inner">
+		    <a class="brand" href="#">Categories</a>
+		  </div>
+		</div>
+		<div class="container">
+			<br/>
+			<div class="row">
+				<div class="span3"></div>
+				<div class="well span6">
+					<h1>Welcome</h1>
+					<hr/>
+					<form class="form-horizontal" id="loginForm" name="loginForm" action="j_spring_security_check" method="post">
+					  <fieldset>
+			
+					    <div class="control-group">
+					      <!-- Username -->
+					      <label class="control-label"  for="username">Username</label>
+					      <div class="controls">
+					        <input id="usernameField" type="text" name="j_username" placeholder="" class="input-block-level"/>
+					      </div>
+					    </div>
+					
+					    <div class="control-group">
+					      <!-- Password-->
+					      <label class="control-label" for="password">Password</label>
+					      <div class="controls">
+					        <input id="passwordField" type="password" name="j_password" placeholder="" class="input-block-level"/>
+					      </div>
+					    </div>
+					
+						<hr/>
+					
+					    <div class="control-group">
+					      <!-- Button -->
+					      <div class="controls">
+					        <button class="btn btn-success btn-large" type="submit" value="Login">Login</button>
+					      </div>
+					    </div>
+					  </fieldset>
+					</form>
+				</div>
+				<div class="span3"></div>
+			</div>		
+		</div>
+		<script src="js/lib/bootstrap.min.js"></script>
+	</body>
+
+</html>
